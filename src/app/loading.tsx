@@ -1,4 +1,4 @@
-import { ListLists } from "@/Components/Molecules/ListLists";
+import { LoadingAnimation } from "@/Components/Athoms/LoadingAnimation";
 
 import { NewList } from "./NewList";
 
@@ -28,13 +28,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className="text-center px-16 mb-4">
+      <section className="text-center px-16">
         <h2 className="my-6 text-lg font-bold">Listas atuais</h2>
         <div className="flex flex-col items-start text-left">
           <NewList />
-
-          {/* @ts-expect-error Server Component */}
-          <ListLists />
+          <div className="m-4 h-96 border rounded-md w-full overflow-hidden">
+            <LoadingAnimation />
+          </div>
         </div>
       </section>
     </>
