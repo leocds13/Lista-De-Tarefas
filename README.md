@@ -48,5 +48,5 @@ Criei uma camada de abstração para em ambiente de desenvolvimento usar lista n
 - [x] Todos podem colaborar
 - [x] Excluir list ou item
 - [x] Editar list ou item
-- [] Editar ordem de itens
-- [] Authorization token
+- [ ] Editar ordem de itens
+- [ ] Authorization token
