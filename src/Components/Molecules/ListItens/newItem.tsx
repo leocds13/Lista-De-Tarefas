@@ -8,7 +8,7 @@ import { Button } from "@/Components/Athoms/Button";
 import { Item } from "@/Types/Item";
 import { PartialBy } from "@/Types/Utils";
 
-import { NewItemForm } from "./NewItemForm";
+import { ItemForm } from "../../Athoms/ItemForm";
 
 type CreateItemBody = {
   item: PartialBy<Omit<Item, "itens" | "order">, "id">;
@@ -44,7 +44,7 @@ export const NewItem = ({ listId }: NewItemProps) => {
   };
 
   if (isAdding) {
-    return <NewItemForm submit={addItem} />;
+    return <ItemForm buttonText="Adicionar" submit={addItem} />;
   }
 
   return (

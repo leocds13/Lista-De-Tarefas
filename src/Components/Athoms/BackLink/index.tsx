@@ -6,7 +6,10 @@ export const BackLink = () => {
   const router = useRouter();
 
   return (
-    <p className="text-blue-400 cursor-pointer" onClick={() => router.back()}>
+    <p
+      className="text-light-info dark:text-dark-info cursor-pointer"
+      onClick={() => router.back()}
+    >
       Voltar
     </p>
   );

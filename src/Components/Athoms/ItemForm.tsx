@@ -3,12 +3,18 @@ import { useState } from "react";
 import { Button } from "@/Components/Athoms/Button";
 import { Input } from "@/Components/Athoms/Input";
 
-type NewItemFormProps = {
+type ItemFormProps = {
+  initialVal?: string;
+  buttonText: string;
   submit: (val: string) => void;
 };
 
-export const NewItemForm = ({ submit }: NewItemFormProps) => {
-  const [itemName, setItemName] = useState("");
+export const ItemForm = ({
+  buttonText,
+  initialVal = "",
+  submit,
+}: ItemFormProps) => {
+  const [itemName, setItemName] = useState(initialVal);
 
   return (
     <div className="p-2">
@@ -25,7 +31,7 @@ export const NewItemForm = ({ submit }: NewItemFormProps) => {
           submit(itemName);
         }}
       >
-        Adicionar
+        {buttonText}
       </Button>
     </div>
   );

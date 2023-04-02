@@ -1,20 +1,16 @@
 "use client";
 import { ReactNode } from "react";
 
-import { ListContextProvider } from "@/Contexts/ListProvider";
-import { ListService } from "@/Services/ListService";
+import { ThemeProvider } from "@/Contexts/Theme";
 
 type AppProviderProps = {
   children: ReactNode;
-  listProvider: ListService;
 };
 
-export const AppProvider = ({ children, listProvider }: AppProviderProps) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <>
-      <ListContextProvider provider={listProvider}>
-        {children}
-      </ListContextProvider>
+      <ThemeProvider>{children}</ThemeProvider>
     </>
   );
 };

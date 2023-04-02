@@ -21,7 +21,7 @@ const ValidatePageDontExists = async ({
   }
 
   list = await globalThis.ListService.createList({
-    name: newList,
+    name: newList.replaceAll("%20", " "),
   });
 
   redirect(list.permalink);

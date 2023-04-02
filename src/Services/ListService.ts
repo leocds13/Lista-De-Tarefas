@@ -35,10 +35,18 @@ export class ListService {
           0
         ) + 1;
 
-    return this.listProvider.createList({
+    return await this.listProvider.createList({
       id: list.id,
       name: list.name,
     });
+  }
+
+  async updateList(list: List): Promise<List> {
+    return await this.listProvider.updateList(list);
+  }
+
+  async deleteListbyId(list: List): Promise<void> {
+    return await this.listProvider.deleteListbyId(list.id);
   }
 
   async getAllItens(listId: number, itemId: number[]): Promise<Item[]> {
@@ -57,7 +65,7 @@ export class ListService {
           0
         ) + 1;
 
-    return this.listProvider.createItem(listId, itemId, {
+    return await this.listProvider.createItem(listId, itemId, {
       id: item.id,
       listId: item.listId,
       parentId: item.parentId,
@@ -70,6 +78,10 @@ export class ListService {
     itemId: number[],
     item: Item
   ): Promise<Item> {
-    return this.listProvider.updateItem(listId, itemId, item);
+    return await this.listProvider.updateItem(listId, itemId, item);
+  }
+
+  async deleteItembyId(listId: number, itemId: number[]): Promise<void> {
+    return await this.listProvider.deleteItembyId(listId, itemId);
   }
 }

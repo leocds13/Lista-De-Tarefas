@@ -1,5 +1,5 @@
 import { MockedProvider } from "@/providers/Mocked/MockedProvider";
-import { VibranneoProvider } from "@/providers/VibbraneoBackend/VibbraneoProvider";
+// import { VibranneoProvider } from "@/providers/VibbraneoBackend/VibbraneoProvider";
 
 import { ListService } from "./ListService";
 
@@ -8,12 +8,13 @@ declare global {
   var ListService: ListService;
 }
 
-const development: boolean =
-  !process.env.NODE_ENV || process.env.NODE_ENV === "development";
+// const development: boolean =
+//   !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
-const listProvider = development
-  ? new MockedProvider()
-  : new VibranneoProvider();
+// const listProvider = development
+//   ? new MockedProvider()
+//   : new VibranneoProvider();
+const listProvider = new MockedProvider();
 
 const listService: ListService =
   globalThis.ListService || new ListService(listProvider);

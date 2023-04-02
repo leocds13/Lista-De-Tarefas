@@ -1,12 +1,19 @@
 "use client";
-import { CaretDown, CaretUp, Dot, Pencil, Plus } from "@phosphor-icons/react";
+import {
+  CaretDown,
+  CaretUp,
+  Dot,
+  Pencil,
+  Plus,
+  Trash,
+} from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Item } from "@/Types/Item";
 import { PartialBy } from "@/Types/Utils";
 
-import { NewItemForm } from "./NewItemForm";
+import { ItemForm } from "../../Athoms/ItemForm";
 
 type CreateItemBody = {
   item: PartialBy<Omit<Item, "itens" | "order">, "id">;
@@ -67,21 +74,37 @@ export const ListItem = ({ item }: ListItemProps) => {
     });
   };
 
+  const deleteItem = () => {
+    const content: { item: Item } = {
+      item: item,
+    };
+
+    fetch("/api/item", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    }).then(_ => {
+      router.refresh();
+    });
+  };
+
   return (
     <>
-      <div className="flex items-center gap-2 text-lg justify-between hover:bg-slate-300">
+      <div className="flex items-center gap-2 text-lg justify-between hover:bg-light-base-400 dark:hover:bg-dark-base-300 rounded p-2">
         <div className="flex items-center gap-2">
-          {item.itens && item.itens.length <= 0 ? (
+          {!item.itens || item.itens.length <= 0 ? (
             <Dot weight="fill" size={25} />
           ) : isOpen ? (
-            <CaretDown
+            <CaretUp
               weight="bold"
               size={25}
               className="cursor-pointer"
               onClick={toggleOpen}
             />
           ) : (
-            <CaretUp
+            <CaretDown
               weight="bold"
               size={25}
               className="cursor-pointer"
@@ -89,12 +112,16 @@ export const ListItem = ({ item }: ListItemProps) => {
             />
           )}
           {isEditing ? (
-            <NewItemForm submit={editItem} />
+            <ItemForm
+              buttonText="Editar"
+              initialVal={item.item}
+              submit={editItem}
+            />
           ) : (
             <p>{item.item ? item.item : "Sem nome"}</p>
           )}
         </div>
-        <div className="flex items-center gap-2 pl-2">
+        <div className="flex items-center gap-2 p-4">
           <Plus
             className="cursor-pointer"
             onClick={() => {
@@ -109,20 +136,25 @@ export const ListItem = ({ item }: ListItemProps) => {
               setIsEditing(val => !val);
             }}
           />
+          <Trash
+            className="cursor-pointer"
+            onClick={() => {
+              if (
+                confirm(
+                  `Deseja deletar o Item ${item.item}?\nIsso não poderá ser desfeito!`
+                )
+              ) {
+                deleteItem();
+              }
+            }}
+          />
         </div>
       </div>
       <div className="pl-4">
         {isOpen &&
           item.itens &&
           item.itens.map(item => <ListItem item={item} key={item.id} />)}
-        {isAdding && (
-          <NewItemForm
-            submit={addItem}
-            // listId={item.listId}
-            // itensIds={[...item.parentId, item.id]}
-            // reset={() => setIsAdding(false)}
-          />
-        )}
+        {isAdding && <ItemForm buttonText="Adicionar" submit={addItem} />}
       </div>
     </>
   );

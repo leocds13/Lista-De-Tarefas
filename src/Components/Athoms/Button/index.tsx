@@ -8,7 +8,10 @@ export const Button = ({
 }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <button
-      className={clsx(["bg-green-500 p-2 rounded-xl", className])}
+      className={clsx([
+        "bg-light-success dark:bg-dark-success p-2 rounded-xl ",
+        className,
+      ])}
       {...props}
     >
       {children}

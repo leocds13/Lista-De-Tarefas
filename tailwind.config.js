@@ -4,8 +4,52 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      backgroundSize: {
-        animation: "50%",
+      fontFamily: {
+        roboto: ["var(--font-roboto)"],
+      },
+      colors: {
+        light: {
+          primary: "#3366FF",
+          secundary: "#33FF98",
+          success: "#83BF1C",
+          info: "#02AFFF",
+          warning: "#FFC700",
+          danger: "#FF3E28",
+          base: {
+            DEFAULT: "#FFF",
+            300: "#F7F9FC",
+            400: "#E4E9F2",
+          },
+          contrast: {
+            300: "#8F9BB3",
+            DEFAULT: "#1A2138",
+          },
+          text: {
+            300: "#8F9BB3",
+            DEFAULT: "#1A2138",
+          },
+        },
+        dark: {
+          primary: "#3366FF",
+          secundary: "#33FF98",
+          success: "#83BF1C",
+          info: "#02AFFF",
+          warning: "#FFC700",
+          danger: "#FF3E28",
+          base: {
+            DEFAULT: "#222B45",
+            300: "#1A2138",
+            400: "#101426",
+          },
+          contrast: {
+            DEFAULT: "#FFF",
+            300: "#8F9B9A",
+          },
+          text: {
+            DEFAULT: "#FFF",
+            300: "#8F9B9A",
+          },
+        },
       },
       keyframes: {
         loading: {
@@ -17,20 +61,6 @@ module.exports = {
             top: "0",
             left: "0",
           },
-          // "50%": {
-          //   backgroundSize: "200% 200%",
-          //   backgroundImage:
-          //     "linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)",
-          //   backgroundPosition: "50% 50%",
-          //   backgroundRepeat: "no-repeat",
-          // },
-          // "100%": {
-          //   backgroundSize: "200% 200%",
-          //   backgroundImage:
-          //     "linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)",
-          //   backgroundPosition: "200% 50%",
-          //   backgroundRepeat: "no-repeat",
-          // },
         },
       },
       animation: {

@@ -28,3 +28,14 @@ export async function PUT(request: Request) {
 
   return NextResponse.json(newItem);
 }
+
+export async function DELETE(request: Request) {
+  const item: Item = (await request.json()).item;
+
+  await globalThis.ListService.deleteItembyId(item.listId, [
+    ...item.parentId,
+    item.id,
+  ]);
+
+  return new Response();
+}

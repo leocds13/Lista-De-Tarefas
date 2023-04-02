@@ -27,6 +27,7 @@ export class MockedProvider implements IListProvider {
       name: list.name,
       permalink: "/list/" + list.name.replaceAll(" ", "-"),
       itens: [],
+      order: this.data.length + 1,
     };
 
     this.data.push(newList);

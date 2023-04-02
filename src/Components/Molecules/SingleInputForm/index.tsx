@@ -24,7 +24,6 @@ export const SingleInputForm = ({
     <form className="p-4" onSubmit={e => e.preventDefault()}>
       <label htmlFor="listName">{labelText}</label>
       <div className="flex gap-2">
-        {/* <input type="text" /> */}
         <Input
           id="listName"
           type="text"
