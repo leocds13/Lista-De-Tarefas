@@ -5,7 +5,7 @@ Para o cliente Vibbraneo
 ## demo
 
 Veja uma versão rodando em
-[https://lista-de-tarefas-leocds13.vercel.app](live demo)
+[live demo](https://lista-de-tarefas-leocds13.vercel.app)
 
 ## Detalhamento
 
