@@ -42,11 +42,10 @@ Criei uma camada de abstração para em ambiente de desenvolvimento usar lista n
 
 ## Funcionalidades
 
-[X] Lista de itens e subItens
-[X] Compartilhar por email
-[X] Todos podem colaborar
-[X] Excluir list ou item
-[X] Editar list ou item
-
-[] Editar ordem de itens
-[] Authorization token
+- [x] Lista de itens e subItens
+- [x] Compartilhar por email
+- [x] Todos podem colaborar
+- [x] Excluir list ou item
+- [x] Editar list ou item
+- [] Editar ordem de itens
+- [] Authorization token
